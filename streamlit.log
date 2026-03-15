@@ -1,0 +1,56 @@
+2026-03-09 18:51:39.236 No ASGI app assignments found in /Users/vasanth/Desktop/duplicate_bug_detection/streamlit_app/app.py
+2026-03-09 18:51:39.280 Filtered 45 packages down to 1 candidates for component scanning
+2026-03-09 18:51:39.280 Scanning 1 candidate packages for component manifests using 1 worker threads
+2026-03-09 18:51:39.289 Found 0 component manifests total
+2026-03-09 18:51:39.289 No asset roots to watch
+2026-03-09 18:51:39.289 File watching not started
+2026-03-09 18:51:39.289 Starting new event loop for server
+2026-03-09 18:51:39.289 Starting server...
+2026-03-09 18:51:39.289 Serving static content from /Users/vasanth/Desktop/duplicate_bug_detection/venv/lib/python3.11/site-packages/streamlit/static
+2026-03-09 18:51:39.291 Server started on port 8501
+2026-03-09 18:51:39.291 Runtime state: RuntimeState.INITIAL -> RuntimeState.NO_SESSIONS_CONNECTED
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://192.168.0.9:8501
+
+  For better performance, install the Watchdog module:
+
+  $ xcode-select --install
+  $ pip install watchdog
+            
+2026-03-09 18:51:39.293 Setting up signal handler
+2026-03-09 18:51:39.508 AppSession initialized (id=0cacd2f1-993d-4255-a374-64c7e1d84ece)
+2026-03-09 18:51:39.508 Created new session for client 4485964048. Session ID: 0cacd2f1-993d-4255-a374-64c7e1d84ece
+2026-03-09 18:51:39.508 Runtime state: RuntimeState.NO_SESSIONS_CONNECTED -> RuntimeState.ONE_OR_MORE_SESSIONS_CONNECTED
+2026-03-09 18:51:39.508 Received the following back message:
+rerun_script {
+  widget_states {
+  }
+  context_info {
+    timezone: "Asia/Calcutta"
+    timezone_offset: -330
+    locale: "en-IN"
+    url: "http://localhost:8501/"
+    is_embedded: false
+    color_scheme: "dark"
+  }
+}
+
+2026-03-09 18:51:39.509 Beginning script thread
+2026-03-09 18:51:39.509 Running script
+2026-03-09 18:51:39.509 Disconnecting files for session with ID 0cacd2f1-993d-4255-a374-64c7e1d84ece
+2026-03-09 18:51:39.509 Sessions still active: dict_keys([])
+2026-03-09 18:51:39.509 Files: 0; Sessions with files: 0
+2026-03-09 18:51:40.890 Creating new DataCache (key=9dd5055ff06d024808bda9293d0cd5b0, persist=None, max_entries=None, ttl=None)
+2026-03-09 18:51:40.891 Cache key: 1d7371219ab4963d4768c5c87d0764c7
+2026-03-09 18:51:40.891 Memory cache MISS: 1d7371219ab4963d4768c5c87d0764c7
+2026-03-09 18:51:40.891 Memory cache MISS: 1d7371219ab4963d4768c5c87d0764c7
+2026-03-09 18:51:40.927 Creating new DataCache (key=edbf9488dc3f1d822c97d0b30e7d946b, persist=None, max_entries=None, ttl=None)
+2026-03-09 18:51:40.927 Cache key: 0ba1358efda0c3470ee904b2acca66f8
+2026-03-09 18:51:40.927 Memory cache MISS: 0ba1358efda0c3470ee904b2acca66f8
+2026-03-09 18:51:40.927 Memory cache MISS: 0ba1358efda0c3470ee904b2acca66f8
+2026-03-09 18:51:40.928 Removing orphaned files...
+2026-03-09 18:51:40.928 Removing orphaned deferred callables...
+2026-03-09 18:53:11.211 Runtime state: RuntimeState.ONE_OR_MORE_SESSIONS_CONNECTED -> RuntimeState.NO_SESSIONS_CONNECTED

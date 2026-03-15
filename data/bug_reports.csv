@@ -1,0 +1,9 @@
+id,title,description
+1,App crashes on save,Application crashes when clicking save button
+2,Save button causes crash,System stops working when save button is pressed
+3,Login page freezes,Login page freezes after entering credentials
+4,Unable to login,System hangs when submitting login form
+5,Dark mode not working,Dark theme not applied correctly
+6,Theme color incorrect,Application theme does not switch to dark mode
+7,Error uploading image,Image upload fails with error
+8,Image upload crash,System crashes when uploading profile picture
