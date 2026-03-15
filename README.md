@@ -35,8 +35,12 @@ They're all the **same bug**. This tool uses **Natural Language Processing (NLP)
 - 🧹 **Smart text preprocessing** — removes noise, stopwords, and special characters automatically
 - 📊 **TF-IDF vectorization** — converts bug descriptions into meaningful numerical representations
 - 📐 **Cosine similarity scoring** — mathematically compares bug reports for accuracy
-- 🖥️ **Clean Streamlit UI** — no terminal needed, just a simple web interface
-- ⚙️ **Auto port detection** — launcher finds a free port automatically, no config needed
+- 🎯 **Confidence level labels** — results labeled as 🔴 High / 🟠 Medium / 🟡 Low match
+- 🧪 **Example bug buttons** — click to auto-fill input, great for first-time users
+- 📊 **Live dashboard** — bar charts, category stats, and full bug table in one view
+- 🗂️ **Category filter** — narrow search to UI, Auth, Backend, or Database bugs
+- 🖥️ **Wide Streamlit UI** — clean two-tab layout with onboarding guide built in
+- 56 real-world bug reports across 4 categories out of the box
 
 ---
 
@@ -46,9 +50,10 @@ They're all the **same bug**. This tool uses **Natural Language Processing (NLP)
 Input:  "Login page freezes after entering credentials"
 
 Results:
-  Bug 3 → similarity: 1.00  ✅ Exact match!
-  Bug 4 → similarity: 0.42  ⚠️  Possible duplicate: "System hangs when submitting login form"
-  Bug 1 → similarity: 0.05  ✔️  Not a duplicate
+  🔴 High Match   | Bug 3  | Score: 1.00 | "Login page freezes after entering credentials"
+  🟠 Medium Match | Bug 4  | Score: 0.42 | "System hangs when submitting login form"
+
+✅ Summary: 2 duplicates found — 🔴 1 High · 🟠 1 Medium · 🟡 0 Low
 ```
 
 ---
@@ -59,13 +64,15 @@ Results:
 duplicate-bug-detector/
 │
 ├── 📂 data/
-│   └── bug_reports.csv          # Bug dataset (id, title, description)
+│   └── bug_reports.csv          # 56 bug reports across 4 categories
 │
 ├── 📂 preprocessing/
+│   ├── __init__.py
 │   └── clean_text.py            # NLP text cleaning pipeline
 │
 ├── 📂 streamlit_app/
-│   └── app.py                   # Streamlit web UI
+│   ├── __init__.py
+│   └── app.py                   # Streamlit web UI (2-tab layout)
 │
 ├── train.py                     # CLI script — prints full similarity matrix
 ├── run_streamlit.py             # Smart launcher with auto port detection
@@ -84,19 +91,20 @@ git clone https://github.com/vasanth-1718/duplicate-bug-detector.git
 cd duplicate-bug-detector
 ```
 
-### 2. Create a virtual environment (recommended)
+### 2. Fix SSL certificates (Mac only — one time)
 
 ```bash
-python -m venv venv
-
-# On Windows
-venv\Scripts\activate
-
-# On Mac/Linux
-source venv/bin/activate
+/Applications/Python\ 3.*/Install\ Certificates.command
 ```
 
-### 3. Install dependencies
+### 3. Create a virtual environment
+
+```bash
+python3 -m venv venv
+source venv/bin/activate        # Mac/Linux
+```
+
+### 4. Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -106,14 +114,13 @@ pip install -r requirements.txt
 
 ## 🚀 Usage
 
-### 🖥️ Run the Web App (recommended)
+### 🖥️ Run the Web App
 
 ```bash
-python run_streamlit.py
+streamlit run streamlit_app/app.py
 ```
 
-Opens automatically at `http://localhost:8501` (or next free port).  
-Type a bug description → Click **"Check Duplicate"** → See results instantly!
+Opens at `http://localhost:8501` — type a bug → click **Check Duplicate** → see results instantly!
 
 ### 💻 Run the CLI Training Script
 
@@ -121,7 +128,14 @@ Type a bug description → Click **"Check Duplicate"** → See results instantly
 python train.py
 ```
 
-Prints the full similarity matrix and lists all detected duplicate pairs in the terminal.
+Prints the full similarity matrix, category breakdown, and all detected duplicate pairs in the terminal.
+
+### 🔁 Every time you reopen the project
+
+```bash
+source venv/bin/activate
+streamlit run streamlit_app/app.py
+```
 
 ---
 
@@ -146,8 +160,10 @@ Prints the full similarity matrix and lists all detected duplicate pairs in the 
  └─────────────────────┘
          │
          ▼
-  Score > 0.3 → ⚠️ Possible Duplicate!
-  Score ≤ 0.3 → ✅ Likely Unique
+  🔴 Score ≥ 0.75 → High Match
+  🟠 Score ≥ 0.45 → Medium Match
+  🟡 Score ≥ 0.30 → Low Match
+  ✅ Score < 0.30 → Unique Bug
 ```
 
 ### Why TF-IDF + Cosine Similarity?
@@ -160,6 +176,29 @@ Prints the full similarity matrix and lists all detected duplicate pairs in the 
 
 ---
 
+## 📊 Dataset
+
+56 bug reports across 4 categories, each with realistic duplicates built in:
+
+| Category | # Bugs | Examples |
+|---|---|---|
+| **UI** | 20 | crashes, layout, dark mode, pagination |
+| **Auth** | 14 | login, OTP, session, JWT, roles |
+| **Backend** | 14 | API errors, payments, exports, emails |
+| **Database** | 8 | timeouts, slow queries, insert failures |
+
+### CSV format:
+
+```csv
+id,title,description,category
+1,App crashes on save,Application crashes when clicking save button,UI
+2,Save button causes crash,System stops working when save button is pressed,UI
+```
+
+You can swap in your own dataset — just keep the same column structure!
+
+---
+
 ## 🛠️ Tech Stack
 
 | Tool | Purpose |
@@ -169,20 +208,6 @@ Prints the full similarity matrix and lists all detected duplicate pairs in the 
 | **scikit-learn** | TF-IDF vectorization & cosine similarity |
 | **NLTK** | Tokenization & stopword removal |
 | **Pandas** | Data loading and manipulation |
-
----
-
-## 📊 Dataset Format
-
-Your `bug_reports.csv` must have these columns:
-
-```csv
-id,title,description
-1,App crashes on save,Application crashes when clicking save button
-2,Save button causes crash,System stops working when save button is pressed
-```
-
-You can swap in your own bug dataset — just keep the same column structure!
 
 ---
 
